@@ -1,0 +1,30 @@
+<div class="my-3 p-3 bg-white rounded shadow-sm">
+  <h4 class="border-bottom border-gray pb-2 mb-0">Ajouter une tâche</h4>
+  <div class="media text-muted pt-3">
+    <!-- <svg class="bd-placeholder-img mr-2 rounded" width="32" height="32" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: 32x32"><title>Placeholder</title><rect width="100%" height="100%" fill="#007bff"></rect><text x="50%" y="50%" fill="#007bff" dy=".3em">32x32</text></svg> -->
+    <div class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
+      <div class="mb-3">
+        <label for="name">Nom de la tâche</label>
+        <input type="text" class="form-control" #tacheName/>
+      </div>
+      <div class="mb-3">
+        <label for="description">Description de la tâche</label>
+        <textarea name="description" rows="8" cols="80" class="form-control" #tacheDesc></textarea>
+      </div>
+      <div class="mb-3">
+        <label for="date">Date</label>
+        <input type="text"
+           placeholder="Datepicker"
+           class="form-control"
+           bsDatepicker
+           #tacheDate
+           [bsConfig]="{ dateInputFormat: 'DD/MM/YYYY', containerClass: 'theme-default'}"/>
+      </div>
+    </div>
+  </div>
+  <small class="d-block text-right mt-3">
+    <button type="button" class="btn btn-secondary" (click)="add(tacheName.value, tacheDesc.value, tacheDate.value)">
+     Ajouter ma tâche
+   </button>
+  </small>
+</div>

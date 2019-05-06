@@ -1,0 +1,38 @@
+<div class="my-3 p-3 bg-white rounded shadow-sm">
+  <h4 class="border-bottom border-gray pb-2 mb-0">Toutes mes tâches</h4>
+  <div *ngFor="let task of tasks" class="media text-muted pt-3">
+
+    <svg *ngIf="getColor(task) == 'bleu'" class="bd-placeholder-img mr-2 rounded" width="32" height="32" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: 32x32"><title>Code couleur</title><rect width="100%" height="100%" fill="#007bff"></rect></svg>
+    <svg *ngIf="getColor(task) == 'rouge'" class="bd-placeholder-img mr-2 rounded" width="32" height="32" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: 32x32"><title>Code couleur</title><rect width="100%" height="100%" fill="#d9534f"></rect></svg>
+    <svg *ngIf="getColor(task) == 'vert'" class="bd-placeholder-img mr-2 rounded" width="32" height="32" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: 32x32"><title>Code couleur</title><rect width="100%" height="100%" fill="#5cb85c"></rect></svg>
+
+    <div *ngIf="task.fulfill == true" class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
+      <div class="d-flex justify-content-between align-items-center w-100">
+        <strong class="text-gray-dark"><s> {{task.name}} </s></strong>
+        <button type="button" class="btn btn-secondary" (click)="taskDelete(task)"> Supprimer </button>
+        <!-- <button type="button" class="btn btn-secondary" routerLink="/edit/{{task.id}}"> Modifier </button> -->
+      </div>
+      <!-- <span class="d-block"><s> {{task.date}} </s></span> -->
+      <span class="d-block"><s> {{task.description}} </s></span>
+    </div>
+
+    <div *ngIf="task.fulfill == false" class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
+      <div class="d-flex justify-content-between align-items-center w-100">
+        <STRONG class="text-gray-dark"> {{task.name}} </STRONG>
+        <div class="btn-group">
+          <button type="button" class="btn btn-success" (click)="taskFulfill(task)"> Terminer </button>
+          <button type="button" class="btn btn-secondary" routerLink="/edit/{{task.id}}"> Modifier </button>
+        </div>
+      </div>
+
+      <span *ngIf="getColor(task) == 'rouge'" class="d-block text-danger"> {{task.date}} </span>
+      <span *ngIf="getColor(task) != 'rouge'" class="d-block"> {{task.date}} </span>
+
+      <span class="d-block"> {{task.description}} </span>
+    </div>
+
+  </div>
+  <small class="d-block text-right mt-3">
+    <button type="button" class="btn btn-secondary" routerLink="/new"> Ajouter une tâche </button>
+  </small>
+</div>
